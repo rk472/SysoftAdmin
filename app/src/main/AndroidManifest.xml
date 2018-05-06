@@ -19,7 +19,16 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.AddBatchActivity" />
+        <activity android:name=".Activities.AddCourseActivity" />
+        <activity android:name=".Activities.AddFacultyActivity" />
+        <activity android:name=".Activities.AddPhotoActivity" />
+        <activity android:name=".Activities.AddNewsActivity" />
+        <activity android:name=".Activities.AddSuccessActivity"></activity>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
     </application>
 
 </manifest>

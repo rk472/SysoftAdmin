@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".Activities.AddBatchActivity"
+android:orientation="vertical"
+android:gravity="center">
+
+<EditText
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/batch_name"
+    android:hint="Batch Name ( Subject )"/>
+<EditText
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/batch_start"
+    android:hint="Start Date"
+    android:focusable="false"/>
+<EditText
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/batch_timing"
+    android:hint="Batch Timing"/>
+<ToggleButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/batch_new"
+    android:text="Batch new"/>
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Add Bacth"
+    android:id="@+id/add_batch_button"/>
+
+
+</LinearLayout>

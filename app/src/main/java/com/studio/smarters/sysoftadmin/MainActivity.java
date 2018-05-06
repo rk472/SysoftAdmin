@@ -1,10 +1,11 @@
 package com.studio.smarters.sysoftadmin;
 
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
+import android.support.v4.app.Fragment;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,10 +13,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.studio.smarters.sysoftadmin.Activities.AddBatchActivity;
+import com.studio.smarters.sysoftadmin.Activities.AddCourseActivity;
+import com.studio.smarters.sysoftadmin.Activities.AddFacultyActivity;
+import com.studio.smarters.sysoftadmin.Activities.AddNewsActivity;
+import com.studio.smarters.sysoftadmin.Activities.AddPhotoActivity;
+import com.studio.smarters.sysoftadmin.Activities.AddSuccessActivity;
+import com.studio.smarters.sysoftadmin.fragments.BatchFragment;
+import com.studio.smarters.sysoftadmin.fragments.CourseFragment;
+import com.studio.smarters.sysoftadmin.fragments.FacultyFragment;
+import com.studio.smarters.sysoftadmin.fragments.GalleryFragment;
+import com.studio.smarters.sysoftadmin.fragments.NewsFragment;
+import com.studio.smarters.sysoftadmin.fragments.SuccessFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private FragmentTransaction fragmentTransaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,14 +38,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,6 +48,10 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Fragment f=new BatchFragment();
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_container, f,"batch");
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -79,23 +91,55 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Fragment f=null;
+        String tag="other";
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.nav_batch) {
+            f=new BatchFragment();
+            tag="batch";
+        } else if (id == R.id.nav_course) {
+            f=new CourseFragment();
+
+        } else if (id == R.id.nav_faculty) {
+            f=new FacultyFragment();
+
         } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            f=new GalleryFragment();
+        } else if (id == R.id.nav_news) {
+            f=new NewsFragment();
+        } else if (id == R.id.nav_success) {
+            f=new SuccessFragment();
         }
 
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_container, f,tag);
+        fragmentTransaction.commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void add_batch(View v){
+        Intent i=new Intent(this, AddBatchActivity.class);
+        startActivity(i);
+    }
+    public void add_course(View v){
+        Intent i=new Intent(this, AddCourseActivity.class);
+        startActivity(i);
+    }
+    public void add_faculty(View v){
+        Intent i=new Intent(this, AddFacultyActivity.class);
+        startActivity(i);
+    }
+    public void add_news(View v){
+        Intent i=new Intent(this, AddNewsActivity.class);
+        startActivity(i);
+    }
+    public void add_gallery(View v){
+        Intent i=new Intent(this, AddPhotoActivity.class);
+        startActivity(i);
+    }
+    public void add_success(View v){
+        Intent i=new Intent(this, AddSuccessActivity.class);
+        startActivity(i);
     }
 }
