@@ -70,7 +70,7 @@ public class AddCourseActivity extends AppCompatActivity {
                     m.put("doc","none");
                     CropImage.activity()
                             .setGuidelines(CropImageView.Guidelines.ON)
-                            .setAspectRatio(1,1)
+                            .setAspectRatio(4,6)
                             .start(AddCourseActivity.this);
                 }
             }
